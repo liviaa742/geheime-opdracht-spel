@@ -25,15 +25,15 @@ function toonStart(){
 
           <p><b>Moeilijkheid</b></p>
 
-<button onclick="kiesMoeilijkheid('makkelijk')">
+<button id="btnMakkelijk" onclick="kiesMoeilijkheid('makkelijk')">
 🟢 Makkelijk
 </button>
 
-<button onclick="kiesMoeilijkheid('normaal')">
+<button id="btnNormaal" onclick="kiesMoeilijkheid('normaal')">
 🟠 Normaal
 </button>
 
-<button onclick="kiesMoeilijkheid('chaos')">
+<button id="btnChaos" onclick="kiesMoeilijkheid('chaos')">
 🔴 Chaos 😈
 </button>
 
@@ -194,6 +194,20 @@ function kiesMoeilijkheid(keuze){
 
     moeilijkheid = keuze;
 
+    document.getElementById("btnMakkelijk").className = "";
+    document.getElementById("btnNormaal").className = "";
+    document.getElementById("btnChaos").className = "";
+
+    if(keuze === "makkelijk"){
+        document.getElementById("btnMakkelijk").className = "selected";
+    }
+
+    if(keuze === "normaal"){
+        document.getElementById("btnNormaal").className = "selected";
+    }
+
+    if(keuze === "chaos"){
+        document.getElementById("btnChaos").className = "selected-chaos";
+    }
+
 }
-
-
