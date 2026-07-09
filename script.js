@@ -64,83 +64,8 @@ function startSpel(){
 }
 
 function toonVolgendeSpeler(){
-function toonKaart(){
 
-    if(huidigeSpeler === geheimeSpeler){
-
-        document.getElementById("app").innerHTML = `
-
-            <div class="card">
-
-                <div class="big">🎯</div>
-
-                <h1>Jouw geheime opdracht</h1>
-
-                <p>${opdracht}</p>
-
-                <button onclick="volgendeSpeler()">
-                    Ik heb het gelezen
-                </button>
-
-            </div>
-
-        `;
-
-    }else{
-
-        document.getElementById("app").innerHTML = `
-
-            <div class="card">
-
-                <div class="big">🕵️</div>
-
-                <h1>Je hebt geen opdracht</h1>
-
-                <p>
-                    Ontmasker tijdens het eten wie de opdracht heeft.
-                </p>
-
-                <button onclick="volgendeSpeler()">
-                    Ik heb het gelezen
-                </button>
-
-            </div>
-
-        `;
-
-    }
-
-}
-
-function volgendeSpeler(){
-
-    huidigeSpeler++;
-
-    if(huidigeSpeler >= spelers.length){
-
-        document.getElementById("app").innerHTML = `
-
-            <div class="card">
-
-                <div class="big">🥳</div>
-
-                <h1>Iedereen is klaar!</h1>
-
-                <p>Veel succes tijdens het eten 😈</p>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-    toonVolgendeSpeler();
-
-}
-    document.getElementById("app").innerHTML=`
-
+    document.getElementById("app").innerHTML = `
         <div class="card">
 
             <div class="big">📱</div>
@@ -154,7 +79,74 @@ function volgendeSpeler(){
             </button>
 
         </div>
-
     `;
+
+}
+
+function toonKaart(){
+
+    if(huidigeSpeler === geheimeSpeler){
+
+        document.getElementById("app").innerHTML = `
+            <div class="card">
+
+                <div class="big">🎯</div>
+
+                <h1>Jouw geheime opdracht</h1>
+
+                <p>${opdracht}</p>
+
+                <button onclick="volgendeSpeler()">
+                    Ik heb het gelezen
+                </button>
+
+            </div>
+        `;
+
+    }else{
+
+        document.getElementById("app").innerHTML = `
+            <div class="card">
+
+                <div class="big">🕵️</div>
+
+                <h1>Je hebt geen opdracht</h1>
+
+                <p>Ontmasker tijdens het eten wie de opdracht heeft.</p>
+
+                <button onclick="volgendeSpeler()">
+                    Ik heb het gelezen
+                </button>
+
+            </div>
+        `;
+
+    }
+
+}
+
+function volgendeSpeler(){
+
+    huidigeSpeler++;
+
+    if(huidigeSpeler >= spelers.length){
+
+        document.getElementById("app").innerHTML = `
+            <div class="card">
+
+                <div class="big">🥳</div>
+
+                <h1>Iedereen is klaar!</h1>
+
+                <p>Veel succes tijdens het eten 😈</p>
+
+            </div>
+        `;
+
+        return;
+
+    }
+
+    toonVolgendeSpeler();
 
 }
