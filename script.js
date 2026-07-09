@@ -1,14 +1,15 @@
 const opdrachten = [
     "Vraag iemand wat zijn favoriete vakantieland is.",
     "Gebruik drie keer het woord 'eigenlijk' in een gesprek.",
-    "Neem een slok drinken nadat iemand anders dat doet.",
+    "Neem een slok drinken nadat iemand anders dat doet. en doe dat de hele tijd.",
     "Stel een vraag aan degene die tegenover je zit.",
     "Zeg een keer: 'Dat is wel grappig eigenlijk.'",
     "Noem ongemerkt iemands naam tijdens een gesprek.",
-    "Raak heel even je neus aan.",
-    "Leg ongemerkt je bestek anders neer.",
-    "Kijk vijf seconden uit het raam tijdens een gesprek.",
-    "Vraag of iemand nog iets wil drinken."
+    "Raak ongemerkt tien seconden lang je neus aan.",
+    "Leg ongemerkt je bestek anders neer en laat het zo.",
+    "Kijk tien seconden uit het raam tijdens een gesprek.",
+    "Vertel een grap aan iedereen."
+    "Breng een toast uit."
 ];
 function startSpel(){
 
