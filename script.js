@@ -277,37 +277,33 @@ function brengStemUit(gekozenSpeler){
 }
 function toonUitslag(){
 
-let resultaat = "";
-let goedGeraden = 0;
-let foutGeraden = 0;
+    let resultaat = "";
+    let foutGeraden = 0;
 
-    // Punten voor spelers die goed hebben geraden
     for(let i = 0; i < spelers.length; i++){
 
-if(stemmen[i] === geheimeSpeler){
+        if(stemmen[i] === geheimeSpeler){
 
-    if(i !== geheimeSpeler){
-        resultaat += `<p>✅ ${spelers[i]} had het goed! (+3)</p>`;
-        scores[i] += 3;
+            if(i !== geheimeSpeler){
+                resultaat += `<p>✅ ${spelers[i]} had het goed! (+3)</p>`;
+                scores[i] += 3;
+            }
+
+        }else{
+
+            resultaat += `<p>❌ ${spelers[i]} had het fout.</p>`;
+            foutGeraden++;
+
+        }
+
     }
 
-    goedGeraden++;
+    scores[geheimeSpeler] += foutGeraden;
 
-}else{
+    resultaat += `
+        <p><br>🎯 ${spelers[geheimeSpeler]} krijgt <b>+${foutGeraden} punten</b>, omdat ${foutGeraden} speler(s) hem niet hebben ontmaskerd.</p>
+    `;
 
-    resultaat += `<p>❌ ${spelers[i]} had het fout.</p>`;
-    foutGeraden++;
-
-}
-
-}
-scores[geheimeSpeler] += foutGeraden;
-
-resultaat += `
-    <p><br>🎯 ${spelers[geheimeSpeler]} krijgt <b>+${foutGeraden} punten</b>, omdat ${foutGeraden} speler(s) hem niet hebben ontmaskerd.</p>
-`;
-
-    // Scorebord maken
     let scorebord = "";
 
     for(let i = 0; i < spelers.length; i++){
@@ -315,7 +311,6 @@ resultaat += `
     }
 
     document.getElementById("app").innerHTML = `
-
         <div class="card">
 
             <div class="big">🏆</div>
@@ -335,15 +330,13 @@ resultaat += `
             ${scorebord}
 
             <button onclick="volgendeRonde()">
-    Volgende ronde
-</button>
+                Volgende ronde
+            </button>
 
         </div>
-
     `;
 
 }
-
 
 function volgendeRonde(){
 
@@ -356,6 +349,10 @@ function volgendeRonde(){
     opdracht = lijst[Math.floor(Math.random() * lijst.length)];
 
     huidigeSpeler = 0;
+
+    toonVolgendeSpeler();
+
+}
 
     toonVolgendeSpeler();
 
