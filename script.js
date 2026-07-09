@@ -300,6 +300,7 @@ if(stemmen[i] === geheimeSpeler){
 
 }
 
+}
 scores[geheimeSpeler] += foutGeraden;
 
 resultaat += `
@@ -343,9 +344,6 @@ resultaat += `
 
 }
 
-if(scores.length !== spelers.length){
-    scores = new Array(spelers.length).fill(0);
-}
 
 function volgendeRonde(){
 
