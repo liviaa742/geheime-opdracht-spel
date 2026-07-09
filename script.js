@@ -1,54 +1,86 @@
+let spelers = [];
+let huidigeSpeler = 0;
+let geheimeSpeler = 0;
+let opdracht = "";
+
 const opdrachten = [
-    "Vraag iemand wat zijn favoriete vakantieland is.",
-    "Gebruik drie keer het woord 'eigenlijk' in een gesprek.",
-    "Neem een slok drinken nadat iemand anders dat doet. en doe dat de hele tijd.",
-    "Stel een vraag aan degene die tegenover je zit.",
-    "Zeg een keer: 'Dat is wel grappig eigenlijk.'",
-    "Noem ongemerkt iemands naam tijdens een gesprek.",
-    "Raak ongemerkt tien seconden lang je neus aan.",
-    "Leg ongemerkt je bestek anders neer en laat het zo.",
-    "Kijk tien seconden uit het raam tijdens een gesprek.",
-    "Vertel een grap aan iedereen."
-    "Breng een toast uit."
+    "TEMP"
 ];
+
+toonStart();
+
+function toonStart(){
+
+    document.getElementById("app").innerHTML = `
+        <div class="card">
+
+            <h1>🎭 Geheime Opdracht</h1>
+
+            <p>Vul de namen van de spelers in.</p>
+
+            <input id="naam1" placeholder="Speler 1">
+            <input id="naam2" placeholder="Speler 2">
+            <input id="naam3" placeholder="Speler 3">
+            <input id="naam4" placeholder="Speler 4">
+            <input id="naam5" placeholder="Speler 5">
+            <input id="naam6" placeholder="Speler 6">
+
+            <button onclick="startSpel()">
+                Start spel
+            </button>
+
+        </div>
+    `;
+
+}
+
 function startSpel(){
 
-    let spelers = [];
+    spelers = [];
 
-    for(let i = 1; i <= 6; i++){
+    for(let i=1;i<=6;i++){
 
-        let naam = document.getElementById("naam" + i).value;
+        let naam = document.getElementById("naam"+i).value.trim();
 
-        if(naam != ""){
+        if(naam!=""){
             spelers.push(naam);
         }
 
     }
 
-    if(spelers.length < 3){
+    if(spelers.length<3){
         alert("Vul minstens 3 spelers in.");
         return;
     }
 
-    // Kies één geheime speler
-    let geheimeSpeler = Math.floor(Math.random() * spelers.length);
+    geheimeSpeler = Math.floor(Math.random()*spelers.length);
 
-    // Kies één willekeurige opdracht
-    let opdracht = opdrachten[Math.floor(Math.random() * opdrachten.length)];
+    opdracht = opdrachten[Math.floor(Math.random()*opdrachten.length)];
 
-    // Laat iedere speler om de beurt kijken
-    for(let i = 0; i < spelers.length; i++){
+    huidigeSpeler = 0;
 
-        alert(spelers[i] + ", pak de telefoon en zorg dat niemand meekijkt.");
+    toonVolgendeSpeler();
 
-        if(i === geheimeSpeler){
-            alert("🎯 Jouw geheime opdracht:\n\n" + opdracht);
-        }else{
-            alert("🕵️ Je hebt geen opdracht.\n\nOntmasker tijdens het eten wie de opdracht heeft!");
-        }
+}
 
-        alert("Geef de telefoon door aan de volgende speler.");
-    }
+function toonVolgendeSpeler(){
 
-    alert("Iedereen is klaar! Veel succes 😈");
+    document.getElementById("app").innerHTML=`
+
+        <div class="card">
+
+            <div class="big">📱</div>
+
+            <h1>Geef de telefoon aan</h1>
+
+            <h2>${spelers[huidigeSpeler]}</h2>
+
+            <button onclick="toonKaart()">
+                Ik ben ${spelers[huidigeSpeler]}
+            </button>
+
+        </div>
+
+    `;
+
 }
