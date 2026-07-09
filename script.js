@@ -223,16 +223,62 @@ function startStemronde(){
 
     huidigeStemmer = 0;
 
+    toonStemScherm();
+
+}
+function toonStemScherm(){
+
+    let opties = "";
+
+    for(let i = 0; i < spelers.length; i++){
+
+        opties += `
+            <button onclick="brengStemUit(${i})">
+                ${spelers[i]}
+            </button>
+        `;
+
+    }
+
     document.getElementById("app").innerHTML = `
+
         <div class="card">
 
             <div class="big">🗳️</div>
 
-            <h1>Stemronde</h1>
+            <h1>${spelers[huidigeStemmer]}, wie denk jij dat de geheime speler was?</h1>
 
-            <p>Dit onderdeel bouwen we in de volgende stap.</p>
+            ${opties}
 
         </div>
+
     `;
+
+}
+function brengStemUit(gekozenSpeler){
+
+    stemmen.push(gekozenSpeler);
+
+    huidigeStemmer++;
+
+    if(huidigeStemmer >= spelers.length){
+
+        document.getElementById("app").innerHTML = `
+            <div class="card">
+
+                <div class="big">🏁</div>
+
+                <h1>Alle stemmen zijn binnen!</h1>
+
+                <p>De uitslag bouwen we hierna.</p>
+
+            </div>
+        `;
+
+        return;
+
+    }
+
+    toonStemScherm();
 
 }
