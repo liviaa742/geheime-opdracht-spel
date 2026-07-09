@@ -53,10 +53,7 @@ function startSpel(){
     spelers = [];
     stemmen = [];
     huidigeStemmer = 0;
-    if(scores.length !== spelers.length){
-    scores = new Array(spelers.length).fill(0);
-}
-
+   
     for(let i=1;i<=6;i++){
 
         let naam = document.getElementById("naam"+i).value.trim();
@@ -71,6 +68,9 @@ function startSpel(){
         alert("Vul minstens 3 spelers in.");
         return;
     }
+    if(scores.length !== spelers.length){
+    scores = new Array(spelers.length).fill(0);
+}
 
     geheimeSpeler = Math.floor(Math.random()*spelers.length);
 
@@ -328,9 +328,9 @@ function toonUitslag(){
 
             ${scorebord}
 
-            <button onclick="startSpel()">
-                Volgende ronde
-            </button>
+            <button onclick="volgendeRonde()">
+    Volgende ronde
+</button>
 
         </div>
 
@@ -338,3 +338,6 @@ function toonUitslag(){
 
 }
 
+if(scores.length !== spelers.length){
+    scores = new Array(spelers.length).fill(0);
+}
