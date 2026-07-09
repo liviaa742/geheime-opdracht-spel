@@ -341,3 +341,19 @@ function toonUitslag(){
 if(scores.length !== spelers.length){
     scores = new Array(spelers.length).fill(0);
 }
+
+function volgendeRonde(){
+
+    stemmen = [];
+    huidigeStemmer = 0;
+
+    geheimeSpeler = Math.floor(Math.random() * spelers.length);
+
+    let lijst = opdrachten[moeilijkheid];
+    opdracht = lijst[Math.floor(Math.random() * lijst.length)];
+
+    huidigeSpeler = 0;
+
+    toonVolgendeSpeler();
+
+}
