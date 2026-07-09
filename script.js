@@ -3,9 +3,19 @@ let huidigeSpeler = 0;
 let geheimeSpeler = 0;
 let opdracht = "";
 let moeilijkheid = "normaal";
-const opdrachten = [
-    "TEMP"
-];
+const opdrachten = {
+    makkelijk: [
+        "TEMP MAKKELIJK"
+    ],
+
+    normaal: [
+        "TEMP NORMAAL"
+    ],
+
+    chaos: [
+        "TEMP CHAOS"
+    ]
+};
 
 toonStart();
 
@@ -69,7 +79,9 @@ function startSpel(){
 
     geheimeSpeler = Math.floor(Math.random()*spelers.length);
 
-    opdracht = opdrachten[Math.floor(Math.random()*opdrachten.length)];
+    let lijst = opdrachten[moeilijkheid];
+
+opdracht = lijst[Math.floor(Math.random() * lijst.length)];
 
     huidigeSpeler = 0;
 
