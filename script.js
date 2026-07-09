@@ -206,18 +206,6 @@ function kiesMoeilijkheid(keuze){
 
     moeilijkheid = keuze;
 
-    if(keuze === "makkelijk"){
-        alert("🟢 Makkelijk geselecteerd");
-    }
-
-    if(keuze === "normaal"){
-        alert("🟠 Normaal geselecteerd");
-    }
-
-    if(keuze === "chaos"){
-        alert("🔴 Chaos geselecteerd");
-    }
-
 }
 
 
