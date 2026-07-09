@@ -80,3 +80,10 @@ button:hover{
         transform:translateY(0);
     }
 }
+.selected{
+    background:#2ecc71 !important;
+}
+
+.selected-chaos{
+    background:#e74c3c !important;
+}
