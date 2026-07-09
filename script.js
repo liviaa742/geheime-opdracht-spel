@@ -263,22 +263,48 @@ function brengStemUit(gekozenSpeler){
 
     if(huidigeStemmer >= spelers.length){
 
-        document.getElementById("app").innerHTML = `
-            <div class="card">
-
-                <div class="big">🏁</div>
-
-                <h1>Alle stemmen zijn binnen!</h1>
-
-                <p>De uitslag bouwen we hierna.</p>
-
-            </div>
-        `;
-
+        toonUitslag();
         return;
 
     }
 
     toonStemScherm();
+
+}
+function toonUitslag(){
+
+    let resultaat = "";
+
+    for(let i = 0; i < spelers.length; i++){
+
+        if(stemmen[i] === geheimeSpeler){
+            resultaat += `<p>✅ ${spelers[i]} had het goed!</p>`;
+        }else{
+            resultaat += `<p>❌ ${spelers[i]} had het fout.</p>`;
+        }
+
+    }
+
+    document.getElementById("app").innerHTML = `
+
+        <div class="card">
+
+            <div class="big">🏆</div>
+
+            <h1>Uitslag</h1>
+
+            <h2>De geheime speler was:</h2>
+
+            <h1>${spelers[geheimeSpeler]}</h1>
+
+            ${resultaat}
+
+            <button onclick="toonStart()">
+                Nieuw spel
+            </button>
+
+        </div>
+
+    `;
 
 }
