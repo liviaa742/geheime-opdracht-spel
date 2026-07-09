@@ -5,6 +5,7 @@ let opdracht = "";
 let moeilijkheid = "normaal";
 let stemmen = [];
 let huidigeStemmer = 0;
+let scores = [];
 
 toonStart();
 
@@ -52,6 +53,9 @@ function startSpel(){
     spelers = [];
     stemmen = [];
     huidigeStemmer = 0;
+    if(scores.length !== spelers.length){
+    scores = new Array(spelers.length).fill(0);
+}
 
     for(let i=1;i<=6;i++){
 
@@ -274,16 +278,65 @@ function brengStemUit(gekozenSpeler){
 function toonUitslag(){
 
     let resultaat = "";
+    let goedGeraden = 0;
 
+    // Punten voor spelers die goed hebben geraden
     for(let i = 0; i < spelers.length; i++){
 
         if(stemmen[i] === geheimeSpeler){
-            resultaat += `<p>✅ ${spelers[i]} had het goed!</p>`;
+            resultaat += `<p>✅ ${spelers[i]} had het goed! (+1)</p>`;
+            scores[i]++;
+            goedGeraden++;
         }else{
             resultaat += `<p>❌ ${spelers[i]} had het fout.</p>`;
         }
 
     }
+
+    // Punten voor de geheime speler
+    if(goedGeraden < spelers.length / 2){
+        scores[geheimeSpeler] += 2;
+        resultaat += `<p><br>🎯 ${spelers[geheimeSpeler]} speelde goed en krijgt <b>+2 punten!</b></p>`;
+    }else{
+        resultaat += `<p><br>👀 ${spelers[geheimeSpeler]} werd ontmaskerd en krijgt geen bonus.</p>`;
+    }
+
+    // Scorebord maken
+    let scorebord = "";
+
+    for(let i = 0; i < spelers.length; i++){
+        scorebord += `<p><b>${spelers[i]}</b>: ${scores[i]} punten</p>`;
+    }
+
+    document.getElementById("app").innerHTML = `
+
+        <div class="card">
+
+            <div class="big">🏆</div>
+
+            <h1>Uitslag</h1>
+
+            <h2>De geheime speler was:</h2>
+
+            <h1>${spelers[geheimeSpeler]}</h1>
+
+            ${resultaat}
+
+            <hr>
+
+            <h2>Scorebord</h2>
+
+            ${scorebord}
+
+            <button onclick="startSpel()">
+                Volgende ronde
+            </button>
+
+        </div>
+
+    `;
+
+}
 
     document.getElementById("app").innerHTML = `
 
