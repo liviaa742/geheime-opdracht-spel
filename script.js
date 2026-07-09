@@ -163,7 +163,8 @@ function toonOpdracht(){
     }
 
 }
-function volgendeSpeler(){
+
+  function volgendeSpeler(){
 
     huidigeSpeler++;
 
@@ -184,7 +185,12 @@ function volgendeSpeler(){
         return;
 
     }
-    function kiesMoeilijkheid(keuze){
+
+    toonVolgendeSpeler();
+
+}
+
+function kiesMoeilijkheid(keuze){
 
     moeilijkheid = keuze;
 
@@ -202,6 +208,4 @@ function volgendeSpeler(){
 
 }
 
-    toonVolgendeSpeler();
 
-}
