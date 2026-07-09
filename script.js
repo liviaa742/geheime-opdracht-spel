@@ -338,26 +338,3 @@ function toonUitslag(){
 
 }
 
-    document.getElementById("app").innerHTML = `
-
-        <div class="card">
-
-            <div class="big">🏆</div>
-
-            <h1>Uitslag</h1>
-
-            <h2>De geheime speler was:</h2>
-
-            <h1>${spelers[geheimeSpeler]}</h1>
-
-            ${resultaat}
-
-            <button onclick="toonStart()">
-                Nieuw spel
-            </button>
-
-        </div>
-
-    `;
-
-}
