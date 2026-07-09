@@ -1,3 +1,15 @@
+const opdrachten = [
+    "Vraag iemand wat zijn favoriete vakantieland is.",
+    "Gebruik drie keer het woord 'eigenlijk' in een gesprek.",
+    "Neem een slok drinken nadat iemand anders dat doet.",
+    "Stel een vraag aan degene die tegenover je zit.",
+    "Zeg een keer: 'Dat is wel grappig eigenlijk.'",
+    "Noem ongemerkt iemands naam tijdens een gesprek.",
+    "Raak heel even je neus aan.",
+    "Leg ongemerkt je bestek anders neer.",
+    "Kijk vijf seconden uit het raam tijdens een gesprek.",
+    "Vraag of iemand nog iets wil drinken."
+];
 function startSpel() {
 
     let spelers = [];
@@ -17,6 +29,8 @@ function startSpel() {
         return;
     }
 
-    alert("Spelers: " + spelers.join(", "));
+let opdracht = opdrachten[Math.floor(Math.random() * opdrachten.length)];
+
+alert(opdracht);
 
 }
