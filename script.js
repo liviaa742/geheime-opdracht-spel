@@ -2,7 +2,7 @@ let spelers = [];
 let huidigeSpeler = 0;
 let geheimeSpeler = 0;
 let opdracht = "";
-
+let moeilijkheid = "normaal";
 const opdrachten = [
     "TEMP"
 ];
@@ -25,9 +25,23 @@ function toonStart(){
             <input id="naam5" placeholder="Speler 5">
             <input id="naam6" placeholder="Speler 6">
 
-            <button onclick="startSpel()">
-                Start spel
-            </button>
+          <p><b>Moeilijkheid</b></p>
+
+<button onclick="kiesMoeilijkheid('makkelijk')">
+🟢 Makkelijk
+</button>
+
+<button onclick="kiesMoeilijkheid('normaal')">
+🟠 Normaal
+</button>
+
+<button onclick="kiesMoeilijkheid('chaos')">
+🔴 Chaos 😈
+</button>
+
+<button onclick="startSpel()">
+Start spel
+</button>
 
         </div>
     `;
@@ -170,6 +184,23 @@ function volgendeSpeler(){
         return;
 
     }
+    function kiesMoeilijkheid(keuze){
+
+    moeilijkheid = keuze;
+
+    if(keuze === "makkelijk"){
+        alert("🟢 Makkelijk geselecteerd");
+    }
+
+    if(keuze === "normaal"){
+        alert("🟠 Normaal geselecteerd");
+    }
+
+    if(keuze === "chaos"){
+        alert("🔴 Chaos geselecteerd");
+    }
+
+}
 
     toonVolgendeSpeler();
 
