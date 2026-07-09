@@ -3,19 +3,7 @@ let huidigeSpeler = 0;
 let geheimeSpeler = 0;
 let opdracht = "";
 let moeilijkheid = "normaal";
-const opdrachten = {
-    makkelijk: [
-        "TEMP MAKKELIJK"
-    ],
 
-    normaal: [
-        "TEMP NORMAAL"
-    ],
-
-    chaos: [
-        "TEMP CHAOS"
-    ]
-};
 
 toonStart();
 
