@@ -3,7 +3,8 @@ let huidigeSpeler = 0;
 let geheimeSpeler = 0;
 let opdracht = "";
 let moeilijkheid = "normaal";
-
+let stemmen = [];
+let huidigeStemmer = 0;
 
 toonStart();
 
@@ -49,6 +50,8 @@ Start spel
 function startSpel(){
 
     spelers = [];
+    stemmen = [];
+    huidigeStemmer = 0;
 
     for(let i=1;i<=6;i++){
 
@@ -168,23 +171,27 @@ function toonOpdracht(){
 
     huidigeSpeler++;
 
-    if(huidigeSpeler >= spelers.length){
+if(huidigeSpeler >= spelers.length){
 
-        document.getElementById("app").innerHTML = `
-            <div class="card">
+    document.getElementById("app").innerHTML = `
+        <div class="card">
 
-                <div class="big">🥳</div>
+            <div class="big">🍽️</div>
 
-                <h1>Iedereen is klaar!</h1>
+            <h1>Iedereen is klaar!</h1>
 
-                <p>Veel succes tijdens het eten 😈</p>
+            <p>Veel succes tijdens het eten.</p>
 
-            </div>
-        `;
+            <button onclick="startStemronde()">
+                Start stemronde
+            </button>
 
-        return;
+        </div>
+    `;
 
-    }
+    return;
+
+}
 
     toonVolgendeSpeler();
 
@@ -209,5 +216,23 @@ function kiesMoeilijkheid(keuze){
     if(keuze === "chaos"){
         document.getElementById("btnChaos").className = "selected-chaos";
     }
+
+}
+
+function startStemronde(){
+
+    huidigeStemmer = 0;
+
+    document.getElementById("app").innerHTML = `
+        <div class="card">
+
+            <div class="big">🗳️</div>
+
+            <h1>Stemronde</h1>
+
+            <p>Dit onderdeel bouwen we in de volgende stap.</p>
+
+        </div>
+    `;
 
 }
