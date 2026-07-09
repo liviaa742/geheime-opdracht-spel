@@ -85,9 +85,31 @@ function toonVolgendeSpeler(){
 
 function toonKaart(){
 
+    document.getElementById("app").innerHTML = `
+
+        <div class="card">
+
+            <div class="big">🤫</div>
+
+            <h1>Zorg dat niemand meekijkt</h1>
+
+            <p>Druk pas op de knop als alleen jij het scherm kunt zien.</p>
+
+            <button onclick="toonOpdracht()">
+                Toon mijn kaart
+            </button>
+
+        </div>
+
+    `;
+
+}
+function toonOpdracht(){
+
     if(huidigeSpeler === geheimeSpeler){
 
         document.getElementById("app").innerHTML = `
+
             <div class="card">
 
                 <div class="big">🎯</div>
@@ -101,11 +123,13 @@ function toonKaart(){
                 </button>
 
             </div>
+
         `;
 
     }else{
 
         document.getElementById("app").innerHTML = `
+
             <div class="card">
 
                 <div class="big">🕵️</div>
@@ -119,12 +143,12 @@ function toonKaart(){
                 </button>
 
             </div>
+
         `;
 
     }
 
 }
-
 function volgendeSpeler(){
 
     huidigeSpeler++;
