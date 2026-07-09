@@ -277,29 +277,34 @@ function brengStemUit(gekozenSpeler){
 }
 function toonUitslag(){
 
-    let resultaat = "";
-    let goedGeraden = 0;
+let resultaat = "";
+let goedGeraden = 0;
+let foutGeraden = 0;
 
     // Punten voor spelers die goed hebben geraden
     for(let i = 0; i < spelers.length; i++){
 
-        if(stemmen[i] === geheimeSpeler){
-            resultaat += `<p>✅ ${spelers[i]} had het goed! (+1)</p>`;
-            scores[i]++;
-            goedGeraden++;
-        }else{
-            resultaat += `<p>❌ ${spelers[i]} had het fout.</p>`;
-        }
+if(stemmen[i] === geheimeSpeler){
 
+    if(i !== geheimeSpeler){
+        resultaat += `<p>✅ ${spelers[i]} had het goed! (+3)</p>`;
+        scores[i] += 3;
     }
 
-    // Punten voor de geheime speler
-    if(goedGeraden < spelers.length / 2){
-        scores[geheimeSpeler] += 2;
-        resultaat += `<p><br>🎯 ${spelers[geheimeSpeler]} speelde goed en krijgt <b>+2 punten!</b></p>`;
-    }else{
-        resultaat += `<p><br>👀 ${spelers[geheimeSpeler]} werd ontmaskerd en krijgt geen bonus.</p>`;
-    }
+    goedGeraden++;
+
+}else{
+
+    resultaat += `<p>❌ ${spelers[i]} had het fout.</p>`;
+    foutGeraden++;
+
+}
+
+scores[geheimeSpeler] += foutGeraden;
+
+resultaat += `
+    <p><br>🎯 ${spelers[geheimeSpeler]} krijgt <b>+${foutGeraden} punten</b>, omdat ${foutGeraden} speler(s) hem niet hebben ontmaskerd.</p>
+`;
 
     // Scorebord maken
     let scorebord = "";
