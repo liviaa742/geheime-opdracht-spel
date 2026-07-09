@@ -10,7 +10,7 @@ const opdrachten = [
     "Kijk vijf seconden uit het raam tijdens een gesprek.",
     "Vraag of iemand nog iets wil drinken."
 ];
-function startSpel() {
+function startSpel(){
 
     let spelers = [];
 
@@ -29,8 +29,25 @@ function startSpel() {
         return;
     }
 
-let opdracht = opdrachten[Math.floor(Math.random() * opdrachten.length)];
+    // Kies één geheime speler
+    let geheimeSpeler = Math.floor(Math.random() * spelers.length);
 
-alert(opdracht);
+    // Kies één willekeurige opdracht
+    let opdracht = opdrachten[Math.floor(Math.random() * opdrachten.length)];
 
+    // Laat iedere speler om de beurt kijken
+    for(let i = 0; i < spelers.length; i++){
+
+        alert(spelers[i] + ", pak de telefoon en zorg dat niemand meekijkt.");
+
+        if(i === geheimeSpeler){
+            alert("🎯 Jouw geheime opdracht:\n\n" + opdracht);
+        }else{
+            alert("🕵️ Je hebt geen opdracht.\n\nOntmasker tijdens het eten wie de opdracht heeft!");
+        }
+
+        alert("Geef de telefoon door aan de volgende speler.");
+    }
+
+    alert("Iedereen is klaar! Veel succes 😈");
 }
